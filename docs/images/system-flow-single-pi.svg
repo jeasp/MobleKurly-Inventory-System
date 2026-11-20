@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="876" height="210" viewBox="0 0 876 210" role="img" aria-labelledby="title desc" lang="ko">
+  <title id="title">MobleKurly 시스템 구조</title>
+  <desc id="desc">MFC 관리자가 TCP로 제어 명령을 보내면 라즈베리파이 한 대가 USB 시리얼로 Arduino에 전달합니다. 같은 라즈베리파이에 꽂힌 USB 카메라의 CCTV 영상은 HTTP MJPEG로 MFC에 전송됩니다.</desc>
+  <style>
+    text { font-family: "Pretendard", "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans CJK KR", sans-serif; }
+    .box { fill: #f1f5f9; stroke: #94a3b8; stroke-width: 1.2; }
+    .name { fill: #1e293b; font-weight: 700; }
+    .name { font-size: 18px; text-anchor: middle; }
+    .detail, .label { fill: #475569; font-size: 14px; text-anchor: middle; }
+    .arrow { fill: none; stroke: #64748b; stroke-width: 1.7; stroke-linejoin: round; }
+    .tip { fill: #64748b; }
+    @media (prefers-color-scheme: dark) {
+      .box { fill: #202d3b; stroke: #718396; }
+      .name { fill: #f2f6fb; }
+      .detail, .label { fill: #c6d3e1; }
+      .arrow { stroke: #a4b5c8; }
+      .tip { fill: #a4b5c8; }
+    }
+  </style>
+  <defs>
+    <marker id="tip" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+      <path class="tip" d="M0 0 L8 4 L0 8 Z"/>
+    </marker>
+  </defs>
+  <g id="web" transform="translate(8 12)">
+    <rect class="box" width="102" height="62" rx="10"/>
+    <text class="name" x="51" y="27">Flask</text>
+    <text class="detail" x="51" y="48">웹 주문</text>
+  </g>
+  <g id="db" transform="translate(140 12)">
+    <rect class="box" width="140" height="62" rx="10"/>
+    <text class="name" x="70" y="27">MySQL</text>
+    <text class="detail" x="70" y="48">주문 저장</text>
+  </g>
+  <g id="camera" transform="translate(400 12)">
+    <rect class="box" width="146" height="62" rx="10"/>
+    <text class="name" x="73" y="27">USB 카메라</text>
+    <text class="detail" x="73" y="48">CCTV 촬영</text>
+  </g>
+  <g id="button" transform="translate(627 12)">
+    <rect class="box" width="128" height="62" rx="10"/>
+    <text class="name" x="64" y="27">비상정지 버튼</text>
+    <text class="detail" x="64" y="48">정지 입력</text>
+  </g>
+  <g id="mfc" transform="translate(134 130)">
+    <rect class="box" width="152" height="62" rx="10"/>
+    <text class="name" x="76" y="27">MFC 관리자</text>
+    <text class="detail" x="76" y="48">출고 승인 · CCTV 탭</text>
+  </g>
+  <g id="pi" transform="translate(386 130)">
+    <rect class="box" width="174" height="62" rx="10"/>
+    <text class="name" x="87" y="27">Raspberry Pi (1대)</text>
+    <text class="detail" x="87" y="48">중앙 서버 · CCTV 서버</text>
+  </g>
+  <g id="arduino" transform="translate(638 130)">
+    <rect class="box" width="106" height="62" rx="10"/>
+    <text class="name" x="53" y="27">Arduino</text>
+    <text class="detail" x="53" y="48">모터 제어</text>
+  </g>
+  <g id="belt" transform="translate(775 130)">
+    <rect class="box" width="93" height="62" rx="10"/>
+    <text class="name" x="46.5" y="27">컨베이어</text>
+    <text class="detail" x="46.5" y="48">구동 · 정지</text>
+  </g>
+  <path id="web-to-db" class="arrow" d="M110 43 H135" marker-end="url(#tip)"/>
+  <path id="db-to-mfc" class="arrow" d="M210 74 V125" marker-end="url(#tip)"/>
+  <path id="camera-to-pi" class="arrow" d="M473 74 V125" marker-end="url(#tip)"/>
+  <path id="button-to-arduino" class="arrow" d="M691 74 V125" marker-end="url(#tip)"/>
+  <path id="mfc-to-pi" class="arrow" d="M286 150 H381" marker-end="url(#tip)"/>
+  <path id="pi-to-mfc" class="arrow" d="M386 173 H291" marker-end="url(#tip)"/>
+  <path id="pi-to-arduino" class="arrow" d="M560 161 H633" marker-end="url(#tip)"/>
+  <path id="arduino-to-belt" class="arrow" d="M744 161 H770" marker-end="url(#tip)"/>
+  <text class="label" x="336" y="143">TCP 명령</text>
+  <text class="label" x="336" y="191">HTTP MJPEG</text>
+  <text class="label" x="599" y="151">USB 시리얼</text>
+</svg>
